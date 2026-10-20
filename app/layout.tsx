@@ -1,4 +1,6 @@
+
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import Header from "./components/Header";
@@ -15,8 +17,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const adsenseClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://your-domain.com"),
+  metadataBase: new URL("https://toolmitra.vercel.app"),
   title: {
     default: "ToolMitra - Free Online Tools & Calculators",
     template: "%s | ToolMitra",
@@ -49,12 +53,29 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        {adsenseClient && (
+          <meta
+            name="google-adsense-account"
+            content={adsenseClient}
+          />
+        )}
+      </head>
+
       <body className="flex min-h-full flex-col bg-white text-slate-900">
         <Header />
 
         <div className="flex-1">{children}</div>
 
         <Footer />
+
+        {adsenseClient && (
+          <script
+            async
+            crossOrigin="anonymous"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          />
+        )}
       </body>
     </html>
   );

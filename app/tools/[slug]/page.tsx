@@ -93,16 +93,16 @@ async function ToolPageContent({ params }: PageProps) {
       },
       ...(tool.faq.length
         ? [{
-            "@type": "FAQPage",
-            mainEntity: tool.faq.map((item) => ({
-              "@type": "Question",
-              name: item.q,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: item.a,
-              },
-            })),
-          }]
+          "@type": "FAQPage",
+          mainEntity: tool.faq.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: item.a,
+            },
+          })),
+        }]
         : []),
     ],
   };
@@ -208,12 +208,8 @@ async function ToolPageContent({ params }: PageProps) {
             </div>
           </section>
 
-          <section className="rounded-2xl border border-slate-200 bg-white p-4">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-400">
-              Advertisement
-            </p>
-            <AdSlot />
-          </section>
+          <AdSlot />
+
         </aside>
       </section>
 
