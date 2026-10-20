@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Tool } from "@/types";
+import { Tool } from "@/app/lib/types";
 export default function ToolCard({ tool }: { tool: Tool }) {
   return (
     <Link href={`/tools/${tool.slug}`} className="card block transition-colors hover:border-brand focus:outline-none focus:ring-2 focus:ring-brand/40">

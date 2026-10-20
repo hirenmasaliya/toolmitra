@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import ToolCard from "./ToolCard";
+import ToolCard from "@/app/components/ToolCard";
 
 export default function SearchTools({ tools, limit }: { tools: any[]; limit?: number }) {
   const [q, setQ] = useState("");
