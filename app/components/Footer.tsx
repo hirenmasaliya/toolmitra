@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 const toolLinks = [
   { label: "GST Calculator", href: "/tools/gst-calculator" },
@@ -32,7 +33,7 @@ function FooterLink({
     <li>
       <Link
         href={href}
-        className="inline-flex text-sm leading-6 text-slate-500 transition-colors hover:text-blue-600"
+        className="inline-flex text-[0.95rem] text-[#5f6368] transition-all hover:text-[#1a73e8] hover:translate-x-1"
       >
         {children}
       </Link>
@@ -44,38 +45,39 @@ export default function Footer() {
   const year = 2026;
 
   return (
-    <footer className="mt-auto border-t border-slate-200 bg-slate-50">
+    <footer className="mt-auto border-t border-[#dadce0] bg-[#f8f9fa] font-sans selection:bg-[#e8f0fe] selection:text-[#1a73e8]">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
         {/* Main footer */}
-        <div className="grid gap-10 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12 lg:py-16">
-          {/* Brand information */}
-          <div className="lg:col-span-1">
+        <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
+          
+          {/* Brand information (Spans 4 columns) */}
+          <div className="lg:col-span-4 pr-4">
             <Link
               href="/"
               aria-label="ToolMitra homepage"
-              className="inline-flex items-center gap-2.5"
+              className="group inline-flex items-center gap-3"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-white shadow-md shadow-blue-600/20">
+              <span className="flex h-10 w-10 items-center justify-center rounded-[14px] bg-[#e8f0fe] text-[#1a73e8] transition-colors group-hover:bg-[#d2e3fc]">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="2"
+                  strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="h-5 w-5"
+                  className="h-6 w-6"
                   aria-hidden="true"
                 >
                   <path d="m13 2-3 8H5l6 12 3-9h5L13 2Z" />
                 </svg>
               </span>
 
-              <span className="text-xl font-extrabold tracking-tight text-slate-950">
-                Tool<span className="text-blue-600">Mitra</span>
+              <span className="text-2xl font-bold tracking-tight text-[#202124]">
+                Tool<span className="text-[#1a73e8]">Mitra</span>
               </span>
             </Link>
 
-            <p className="mt-5 max-w-sm text-sm leading-7 text-slate-600">
+            <p className="mt-6 max-w-sm text-[1.05rem] leading-relaxed text-[#5f6368]">
               Your everyday destination for free online calculators and
               useful digital tools. Calculate, explore and get things done
               with simple, practical solutions.
@@ -83,19 +85,19 @@ export default function Footer() {
 
             <Link
               href="/tools"
-              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-white border border-[#dadce0] px-6 py-3 text-[0.95rem] font-medium text-[#1a73e8] transition-all hover:bg-[#f1f3f4] hover:shadow-[0_1px_2px_0_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)] focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/40"
             >
               Explore free tools
-              <span aria-hidden="true">→</span>
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          {/* Popular tools */}
-          <div>
-            <h2 className="text-sm font-bold text-slate-900">
+          {/* Popular tools (Spans 2 columns) */}
+          <div className="lg:col-span-2 lg:col-start-6">
+            <h2 className="text-[1.05rem] font-semibold text-[#202124]">
               Popular Tools
             </h2>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-6 space-y-4">
               {toolLinks.map((link) => (
                 <FooterLink key={link.href} href={link.href}>
                   {link.label}
@@ -104,12 +106,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <h2 className="text-sm font-bold text-slate-900">
+          {/* Company & Categories (Spans 2 columns) */}
+          <div className="lg:col-span-2">
+            <h2 className="text-[1.05rem] font-semibold text-[#202124]">
               Company
             </h2>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-6 space-y-4">
               {companyLinks.map((link) => (
                 <FooterLink key={link.href} href={link.href}>
                   {link.label}
@@ -117,22 +119,22 @@ export default function Footer() {
               ))}
             </ul>
 
-            <h3 className="mt-8 text-sm font-bold text-slate-900">
+            <h3 className="mt-10 text-[1.05rem] font-semibold text-[#202124]">
               Categories
             </h3>
-            <ul className="mt-4 space-y-3">
+            <ul className="mt-6 space-y-4">
               <FooterLink href="/tools">Business Calculators</FooterLink>
               <FooterLink href="/tools">Everyday Calculators</FooterLink>
               <FooterLink href="/tools">Online Utilities</FooterLink>
             </ul>
           </div>
 
-          {/* Legal */}
-          <div>
-            <h2 className="text-sm font-bold text-slate-900">
+          {/* Legal & Promo Card (Spans 3 columns) */}
+          <div className="lg:col-span-3">
+            <h2 className="text-[1.05rem] font-semibold text-[#202124]">
               Legal & Policies
             </h2>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-4 sm:flex-col sm:gap-x-0">
               {legalLinks.map((link) => (
                 <FooterLink key={link.href} href={link.href}>
                   {link.label}
@@ -140,33 +142,41 @@ export default function Footer() {
               ))}
             </ul>
 
-            <div className="mt-8 rounded-xl border border-slate-200 bg-white p-4">
-              <p className="text-sm font-semibold text-slate-900">
-                Free. Simple. Useful.
-              </p>
-              <p className="mt-1 text-xs leading-5 text-slate-500">
-                Tools designed to make everyday tasks easier.
+            {/* Google Material 3 Information Card */}
+            <div className="mt-10 rounded-3xl border border-[#dadce0] bg-white p-6 shadow-sm transition-shadow hover:shadow-[0_1px_3px_0_rgba(60,64,67,0.3),0_4px_8px_3px_rgba(60,64,67,0.15)]">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#fce8e6] text-[#ea4335]">
+                  <Sparkles className="h-4 w-4" />
+                </div>
+                <p className="text-[1.05rem] font-medium text-[#202124]">
+                  Free. Simple. Useful.
+                </p>
+              </div>
+              <p className="text-[0.95rem] leading-relaxed text-[#5f6368]">
+                Tools designed with privacy in mind to make your everyday tasks easier.
               </p>
             </div>
           </div>
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col gap-3 border-t border-slate-200 py-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs leading-5 text-slate-500">
-            © {year} ToolMitra. All rights reserved.
+        <div className="flex flex-col gap-4 border-t border-[#dadce0] py-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[0.9rem] text-[#5f6368]">
+            &copy; {year} ToolMitra. All rights reserved.
           </p>
 
-          <p className="text-xs leading-5 text-slate-500">
-            Made to make everyday tasks easier.
-          </p>
+          <div className="flex flex-wrap items-center gap-4 sm:gap-8">
+            <p className="text-[0.9rem] text-[#5f6368] hidden md:block">
+              Made to make everyday tasks easier.
+            </p>
 
-          <Link
-            href="/tools"
-            className="text-xs font-semibold text-blue-600 transition hover:text-blue-700"
-          >
-            Discover all tools →
-          </Link>
+            <Link
+              href="/tools"
+              className="inline-flex items-center gap-1.5 text-[0.95rem] font-medium text-[#1a73e8] transition-colors hover:text-[#1557b0] hover:underline underline-offset-4"
+            >
+              Discover all tools <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

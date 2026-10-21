@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 declare global {
   interface Window {
@@ -15,6 +14,7 @@ export default function AdSlot({
   className?: string;
 }) {
   const [mounted, setMounted] = useState(false);
+  const adRef = useRef<HTMLModElement>(null);
 
   const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT;
   const slot = process.env.NEXT_PUBLIC_ADSENSE_SLOT;
@@ -27,8 +27,11 @@ export default function AdSlot({
     if (!mounted || !client || !slot) return;
 
     try {
-      window.adsbygoogle = window.adsbygoogle || [];
-      window.adsbygoogle.push({});
+      // Check if this specific element has already been processed by AdSense
+      if (adRef.current && !adRef.current.getAttribute("data-adsbygoogle-status")) {
+        window.adsbygoogle = window.adsbygoogle || [];
+        window.adsbygoogle.push({});
+      }
     } catch (error) {
       console.error("AdSense push error:", error);
     }
@@ -39,16 +42,17 @@ export default function AdSlot({
 
   return (
     <aside
-      className={`my-8 flex w-full flex-col items-center justify-center rounded-2xl border border-slate-200/60 bg-slate-50/50 p-3 shadow-sm sm:p-4 ${className}`}
+      className={`my-8 flex w-full flex-col items-center justify-center p-3 sm:p-4 bg-transparent ${className}`}
     >
       <div className="mb-3 w-full text-center">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
+        <span className="text-[10px] font-bold uppercase tracking-widest text-[#9aa0a6]">
           Advertisement
         </span>
       </div>
 
-      <div className="flex min-h-[250px] w-full items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-inset ring-slate-100">
+      <div className="flex min-h-[250px] w-full items-center justify-center overflow-hidden bg-transparent">
         <ins
+          ref={adRef}
           className="adsbygoogle block w-full"
           style={{ display: "block" }}
           data-ad-client={client}

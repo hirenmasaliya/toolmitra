@@ -405,7 +405,7 @@ export default function Calculator({ slug }: { slug: string }) {
       <p className="mt-2 text-slate-600">This tool is not available yet. Please explore our other tools.</p>
     </div>;
   }
-  return <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+  return <div className="p-4 sm:p-8">
     <div className="mb-6 flex items-center gap-3 border-b border-slate-100 pb-5">
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-inset ring-blue-100"><CalcIcon className="h-6 w-6" /></div>
       <div><h2 className="text-xl font-bold tracking-tight text-slate-900">{tool.name}</h2><p className="mt-1 text-sm text-slate-500">{tool.short}</p></div>
